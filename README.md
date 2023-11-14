@@ -41,6 +41,30 @@ JSON_Object* get_credentials(const char* username, const char* password) {
     return root_object;
 }
 ```
+## Usage of Cookies and HTTP
+
+### Cookies:
+
+- **Login Command:**
+  - Upon a successful login, the server issues a cookie to the client.
+  - The client, in turn, stores this cookie for subsequent requests, allowing the server to recognize and authenticate the user.
+
+- **Logout Command:**
+  - When logging out, the client clears the stored cookie, ensuring a clean termination of the user's session.
+
+### HTTP:
+
+- **GET and POST Requests:**
+  - User commands, such as registering, logging in, or interacting with the library, are translated into either GET or POST requests, depending on the nature of the action.
+
+- **Headers:**
+  - HTTP headers, specifically the `Authorization` header, are utilized to transmit the JWT token securely between the client and server.
+  - The token, prefixed with "Bearer," is included in the header for authentication purposes.
+
+- **Response Handling:**
+  - The client's `parse_response()` function is responsible for interpreting the HTTP responses received from the server.
+  - Successful responses may include data or confirmation messages, while error responses are appropriately handled and presented to the user.
+
 
 ## Command Handling
 
@@ -100,27 +124,3 @@ To run the client-server application, follow these steps:
    - When prompted to exit, enter "y" to gracefully terminate the program.
    - If you wish to continue using the program, enter any other response.
   
-## Usage of Cookies and HTTP
-
-### Cookies:
-
-- **Login Command:**
-  - Upon a successful login, the server issues a cookie to the client.
-  - The client, in turn, stores this cookie for subsequent requests, allowing the server to recognize and authenticate the user.
-
-- **Logout Command:**
-  - When logging out, the client clears the stored cookie, ensuring a clean termination of the user's session.
-
-### HTTP:
-
-- **GET and POST Requests:**
-  - User commands, such as registering, logging in, or interacting with the library, are translated into either GET or POST requests, depending on the nature of the action.
-
-- **Headers:**
-  - HTTP headers, specifically the `Authorization` header, are utilized to transmit the JWT token securely between the client and server.
-  - The token, prefixed with "Bearer," is included in the header for authentication purposes.
-
-- **Response Handling:**
-  - The client's `parse_response()` function is responsible for interpreting the HTTP responses received from the server.
-  - Successful responses may include data or confirmation messages, while error responses are appropriately handled and presented to the user.
-
