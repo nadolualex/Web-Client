@@ -39,3 +39,34 @@ JSON_Object* get_credentials(const char* username, const char* password) {
     // Return the JSON object
     return root_object;
 }
+
+Command Handling
+The client supports various commands, each triggering specific actions on the server:
+
+Register:
+
+The register command creates a JSON object with user credentials and sends a registration request to the server.
+Login:
+
+The login command logs in a user, sets the received cookie for subsequent requests, and validates the login.
+Enter Library:
+
+The enter_library command utilizes a JWT received from the server, parsing it manually, and grants access to the library.
+Logout:
+
+The logout command logs out a user, displaying a confirmation message and clearing allocated memory for the cookie and JWT.
+Get Books:
+
+The get_books command retrieves all books from the library, displaying them in JSON format.
+Add Book:
+
+The add_book command adds a book to the library, ensuring the user is logged in and has the necessary access.
+Delete Book:
+
+The delete_book command deletes a book from the library, verifying user credentials and handling errors appropriately.
+Get Book:
+
+The get_book command retrieves information about a specific book from the library.
+Exit:
+
+The exit command prompts the user for confirmation before terminating the program, closing the TCP connection, and freeing allocated memory.
