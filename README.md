@@ -3,6 +3,7 @@
 ## Overview
 
 This project is a client-server application written in C that communicates over a REST API. The server simulates an online library, exposing a set of HTTP routes for various actions. The client, functioning as a command-line interface (CLI), accepts user commands, sends corresponding requests to the server, and displays the server's responses.
+
 ## Communication Flow
 
 The communication between the client and server involves the following steps:
@@ -39,34 +40,62 @@ JSON_Object* get_credentials(const char* username, const char* password) {
     // Return the JSON object
     return root_object;
 }
+```
 
-Command Handling
+## Command Handling
+
 The client supports various commands, each triggering specific actions on the server:
 
-Register:
+### Register
 
-The register command creates a JSON object with user credentials and sends a registration request to the server.
-Login:
+The `register` command creates a JSON object with user credentials and sends a registration request to the server.
 
-The login command logs in a user, sets the received cookie for subsequent requests, and validates the login.
-Enter Library:
+### Login
 
-The enter_library command utilizes a JWT received from the server, parsing it manually, and grants access to the library.
-Logout:
+The `login` command logs in a user, sets the received cookie for subsequent requests, and validates the login.
 
-The logout command logs out a user, displaying a confirmation message and clearing allocated memory for the cookie and JWT.
-Get Books:
+### Enter Library
 
-The get_books command retrieves all books from the library, displaying them in JSON format.
-Add Book:
+The `enter_library` command utilizes a JWT received from the server, parsing it manually, and grants access to the library.
 
-The add_book command adds a book to the library, ensuring the user is logged in and has the necessary access.
-Delete Book:
+### Logout
 
-The delete_book command deletes a book from the library, verifying user credentials and handling errors appropriately.
-Get Book:
+The `logout` command logs out a user, displaying a confirmation message and clearing allocated memory for the cookie and JWT.
 
-The get_book command retrieves information about a specific book from the library.
-Exit:
+### Get Books
 
-The exit command prompts the user for confirmation before terminating the program, closing the TCP connection, and freeing allocated memory.
+The `get_books` command retrieves all books from the library, displaying them in JSON format.
+
+### Add Book
+
+The `add_book` command adds a book to the library, ensuring the user is logged in and has the necessary access.
+
+### Delete Book
+
+The `delete_book` command deletes a book from the library, verifying user credentials and handling errors appropriately.
+
+### Get Book
+
+The `get_book` command retrieves information about a specific book from the library.
+
+### Exit
+
+The `exit` command gracefully terminates the program, closing the TCP connection and freeing allocated memory.
+
+## Usage
+
+To run the client-server application, follow these steps:
+
+1. **Clone the Repository:**
+  
+2. **Compile and Run:**
+   - Compile the client and server programs.
+   - Execute the compiled client program.
+
+3. **Interaction:**
+   - Follow the on-screen instructions to interact with the application.
+   - Enter commands, and the client will communicate with the server accordingly.
+
+4. **Exiting the Program:**
+   - When prompted to exit, enter "y" to gracefully terminate the program.
+   - If you wish to continue using the program, enter any other response.
